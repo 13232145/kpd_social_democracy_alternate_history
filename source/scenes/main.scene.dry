@@ -52,20 +52,6 @@ is-deck: true
 
 - #party_affairs
 
-@comintern
-title: Comintern Affairs
-card-image: img/Vorwaerts_nr_1.png
-is-deck: true
-
-- #comintern_affairs
-
-@paramilitry
-title: Paramilitary Affairs
-card-image: img/Vorwaerts_nr_1.png
-is-deck: true
-
-- #paramilitary_affairs
-
 @govt
 title: Government Affairs
 view-if: time >= 6
