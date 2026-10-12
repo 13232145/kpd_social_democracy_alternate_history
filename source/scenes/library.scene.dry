@@ -56,10 +56,6 @@ go-to: menu
 
 **1924**: Parliamentary elections are held in May and December, the latter leading to the bourgeois-right governments that last until 1928. Hitler is released from prison. The Dawes Plan for the repayment of the Versailles reparations is negotiated, which reduces payments and increases economic growth. Germany begins to enter a period of relative stability, with the end of the hyperinflation crisis. 
 
-**1925**:  President Friedrich Ebert dies, and new presidential elections are held, leading to the narrow election of Paul von Hindenburg in the second round. Hindenburg is a war hero and a right-wing reactionary. The SPD adopts the Heidelberg Program as its party platform. The Locarno Treaties are signed, which confirmed Germany's post-war western borders.
-
-**1926**: A referendum on the expropriation of the princes, supported by the SPD and KPD, fails.
-
 @curr_gov
 go-to: cabinet if spd_in_government; menu if not spd_in_government
 
@@ -89,12 +85,12 @@ NSDAP: [+ nsdap_r +]%
 # 1928: 9, 1930: 10
 Others: [+ other_r +]%
 
-SPD position: [? if spd_toleration : toleration ?][? if spd_in_government : in government - ?][? if spd_toleration == 0 and spd_in_government == 0 and spd_caretaker == 0 : opposition ?][? if spd_caretaker : caretaker government ?]
-[? if in_weimar_coalition and spd_in_government: Weimar Coalition ?][? if in_grand_coalition and spd_in_government: Grand Coalition ?][? if in_popular_front and spd_in_government: Popular Front ?][? if in_left_front and spd_in_government: Left Front ?][? if in_spd_majority and spd_in_government: SPD majority ?][? if in_minority_government and spd_in_government: minority government ?][? if in_emergency_government and spd_in_government: emergency government ?]
+KPD position: [? if kpd_toleration : toleration ?][? if kpd_in_government : in government - ?][? if kpd_toleration == 0 and kpd_in_government == 0 and kpd_caretaker == 0 : opposition ?][? if kpd_caretaker : caretaker government ?]
+[? if in_weimar_coalition and spd_in_government: Weimar Coalition ?][? if in_grand_coalition and spd_in_government: Grand Coalition ?][? if in_popular_front and kpd_in_government: Popular Front ?][? if in_left_front and kpd_in_government: Left Front ?][? if in_kpd_majority and kpd_in_government: KPD majority ?][? if in_minority_government and spd_in_government: minority government ?][? if in_emergency_government and spd_in_government: emergency government ?]
 
-[? if spd_in_government and not in_spd_majority and not in_left_front : Coalition dissent: [+ coalition_dissent : coalition_dissent +] ?]
+[? if kpd_in_government and not in_kpd_majority and not in_left_front : Coalition dissent: [+ coalition_dissent : coalition_dissent +] ?]
 
-[? if spd_in_government and (in_left_front or in_popular_front): KPD coalition dissent: [+ kpd_coalition_dissent : coalition_dissent +] ?]
+[? if kpd_in_government and (in_left_front or in_popular_front): SPD coalition dissent: [+ spd_coalition_dissent : coalition_dissent +] ?]
 
 @cabinet
 go-to: menu
@@ -204,18 +200,22 @@ Catholics: SPD: [+ catholics_spd_display +]%, Z: [+ catholics_z_display +]%, KPD
 @parties
 go-to: menu
 
-**SPD** - *Sozialdemokratische Partei Deutschlands* (Social Democratic Party of Germany) - this is us. We are a socialist and democratic party of the working class. We are the heirs of the legacy of Marx and Engels, Lassalle and Bebel. We are the foremost defenders of the Republic. The modern SPD was formed from a merger of the "Majority" SPD, which supported the Great War, and the "Independent" SPD or USPD, which opposed the war.
+**KPD** - *Kommunistische Partei Deutschlands* (German Communist Party) - this is us. A radical left-wing offshoot of the SPD that emerged in the aftermath of the German Revolution of 1918, they follow the path of Moscow, opposing parliamentary democracy in favor of a Soviet-style revolution. We are divide on whether to cooperate with the SPD.
 
-**Z** - *Zentrumspartei* (Center Party) - a centrist to center-right Catholic party that supports the Republic, and has historically supported many of our labor, welfare, and anti-militarist priorities. They have often been in coalitions with us. They are often associated with the **BVP** (Bavarian People's Party), which represents Catholics in Bavaria. [? if year >= 1930 or chancellor = "Brüning" : They have appeared to take a more conservative turn recently, with the rise of Brüning and the party leader, Ludwig Kaas. ?]
+**SPD** - *Sozialdemokratische Partei Deutschlands* (Social Democratic Party of Germany) - A socialist and democratic party of the working class. They are heirs of the legacy of Marx and Engels, Lassalle and Bebel. They are the foremost defenders of the Republic. The modern SPD was formed from a merger of the "Majority" SPD, which supported the Great War, and the "Independent" SPD or USPD, which opposed the war.
+
+Current relations: [+ spd_relation : relationships +]
+
+**Z** - *Zentrumspartei* (Center Party) - a centrist to center-right Catholic party that supports the Republic, and has historically supported many of our labor, welfare, and anti-militarist priorities. They are often associated with the **BVP** (Bavarian People's Party), which represents Catholics in Bavaria. [? if year >= 1930 or chancellor = "Brüning" : They have appeared to take a more conservative turn recently, with the rise of Brüning and the party leader, Ludwig Kaas. ?]
 
 Current relations: [+ z_relation : relationships +]
 
 # TODO: replace this with the german state party after 1930
-**DDP** - *Deutsche Demokratische Partei* (German Democratic Party) - a center-left liberal party, popular among the intelligensia and educated middle class. They have often been in coalitions with us. [? if year >= 1930 : They have recently reformed themselves as the German State Party (DStP). ?]
+**DDP** - *Deutsche Demokratische Partei* (German Democratic Party) - a center-left liberal party, popular among the intelligensia and educated middle class. [? if year >= 1930 : They have recently reformed themselves as the German State Party (DStP). ?]
 
 Current relations: [+ ddp_relation : relationships +]
 
-**DVP** - *Deutsche Volkspartei* (German People's Party) - a conservative-liberal party, supported by the middle classes and bourgeoisie. We have occasionally been in coalitions.
+**DVP** - *Deutsche Volkspartei* (German People's Party) - a conservative-liberal party, supported by the middle classes and bourgeoisie. 
 
 Current relations: [+ dvp_relation : relationships +]
 
@@ -223,17 +223,14 @@ Current relations: [+ dvp_relation : relationships +]
 
 Current relations: [+ dnvp_relation : relationships +]
 
-**KPD** - *Kommunistische Partei Deutschlands* (German Communist Party) - a radical left-wing offshoot of the SPD that emerged in the aftermath of the German Revolution of 1918, they follow the path of Moscow, opposing parliamentary democracy in favor of a Soviet-style revolution.
-
-Current relations: [+ kpd_relation : relationships +]
-
-[? if sapd_formed: SAPD - Sozialistische Arbeiterpartei Deutschlands (Socialist Worker's Party of Germany) - a party recently formed in a split from the SPD, the SAPD is essentially an agglomeration of various left-wing splinter groups between the SPD and KPD. ?]
-
 **NSDAP** - *Nationalsozialistische Deutsche Arbeiterpartei* - (National Socialist German Worker's Party, or Nazis) - a far-right nationalist and antisemitic party. Led by Adolf Hitler, they attempted a coup in 1923, and were banned for it, but have since been legalized.
 
 Current relations: [+ nsdap_relation : relationships +]
 
 **Other parties** - there is a multitude of small, mostly conservative parties, such as the Economic Party of the German Middle Class, the Farmer's Party, the Agricultural League, and others. Their political position usually lies between the DVP and DNVP. 
+
+**Left-wing others** - there is a multitude of small leftist parties such as the Leninbund and KAPD. Their political position usually lies between the KPD and SPD. 
+
 
 @paramilitaries
 on-arrival: {!
@@ -284,53 +281,41 @@ Loyalty: [+ prussian_police_loyalty : loyalty +]
 @factions
 go-to: neorevisionists if neorevisionism > 0; menu if neorevisionism <= 0
 
-**Internal factions of the SPD**
+**Internal factions of the KPD**
 
 Overall dissent: [+ dissent_percent : dissent +]
 
-**Left**
+**Ultra-Left**
 
-Many leftists are former members of the USPD (the left-wing, anti-war Independent Social Democratic Party), or are young radicals. Many are interested in closer cooperation with the KPD, and some support extraparliamentary action.
+Led by Ernst Thälmann, the ultra-left seeks to immediately topple the bourgeois democratic establishment. They are the faction most loyal to Moscow, and least willing to cooperate with the SPD. Some are even willing to work with the far-right to topple democratic institutions.
 
-Strength: [+ left_strength : strength +]
+Strength: [+ ultra-left_strength : strength +]
 
-Dissent: [+ left_dissent : dissent +]
+Dissent: [+ ultra-left_dissent : dissent +]
 
-**Centrists**
+**Left Opposition**
 
-Centrists in the SPD are followers of the doctrine of orthodox Marxism as expounded by Karl Kautsky and later Rudolf Hilferding. They seek a middle course between reform and revolution, while defending the democratic state.
+The KPD Left Opposition are followers of Leon Trotsky and the Russian Left Opposition. Despite their orthodox Marixst-Leninist ideology, they see the United Front as a lesser evil, much preferable to fascism. They despise Stalin. Many of them have been expelled from the party.
 
-Strength: [+ center_strength : strength +]
+Strength: [+ left-opposition_strength : strength +]
 
-Dissent: [+ center_dissent : dissent +]
+Dissent: [+ left-opposition_dissent : dissent +]
 
-**Labor**
+**Conciliators**
 
-Many SPD members are also part of the ADGB, the federation of free trade unions. Their goal is economic reform and benefits for organized workers.
+The Conciliators, who derive from the "middle group" of Ernst Meyer, are acceptable to all factions. However, the Left Opposition finds them weak, and the Ultra-Left faction is scheming to oust them. They reluctantly accept the need for a United Front.
 
-Strength: [+ labor_strength : strength +]
+Strength: [+ conciliator_strength : strength +]
 
-Dissent: [+ labor_dissent : dissent +]
+Dissent: [+ conciliator_dissent : dissent +]
 
-**Reformists**
+**Right**
 
-Reformists are pragmatic participants in government, and seek to expand the welfare state and defend democracy against the far right and left. [? if spd_prussia : They are dominant in the state government of Prussia. ?]
+The Right, or the Right Opposition, are the most pragmatic members of the KPD. They are entirely open to cooperation with the SPD, and some seek to expand KPD support by appealing to nationalistic voters. Many have been expelled from the party, including former chairman Paul Levi, now a part of the SPD.
 
-Strength: [+ reformist_strength : strength +]
+Strength: [+ conciliator_strength : strength +]
 
-Dissent: [+ reformist_dissent : dissent +]
-
-@neorevisionists
-go-to: menu
-
-**Neorevisionists**
-
-Neorevisionists focus on defending the republic and expanding democracy, while also expanding the party's base beyond the working class to create a people's party. They support new propaganda methods and extraparliamentary action in defense of the republic.
-
-Strength: [+ neorevisionist_strength : strength +]
-
-Dissent: [+ neorevisionist_dissent : dissent +]
-
+Dissent: [+ conciliator_dissent : dissent +]
 
 @figures
 title: Figures and Charts
@@ -344,12 +329,11 @@ data = [
         "name": "KPD",
         "seats": Q.kpd_r*5,
     }];
-if (Q.sapd_formed && Q.sapd_r) {
-    data.push({
-            "id": "sapd",
-            "legend": "SAPD",
-            "name": "SAPD",
-            "seats": Q.sapd_r*5,
+data.push({
+        "id": "left-others",
+        "legend": "left-others",
+        "name": "left-others",
+        "seats": Q.left-others_r*5,
             });
 }
 data.push({
@@ -358,15 +342,6 @@ data.push({
         "name": "SPD",
         "seats": Q.spd_r*5,
 });
-
-if (Q.srpd_formed && Q.srpd_r) {
-    data.push({
-            "id": "srpd",
-            "legend": "SRPD",
-            "name": "SRPD",
-            "seats": Q.srpd_r*5,
-            });
-}
 
 data = data.concat([
     {
@@ -468,9 +443,7 @@ if (d3 && window) {
 {!<table>!}
 {!<tr><td><div class="box" style='background-color:#E3000F; outline: 2px; outline-style: solid;'> </div></td><td>!} **SPD:** {!</td><td>!} **[+ spd_r +]%** {!</td></tr>!}
 
-[? if sapd_formed : {!<tr><td><div class="box" style='background-color:#C40000'> </div></td> <td> !}SAPD: {!</td><td>!} [+ sapd_r +]% {!</td></tr>!} ?]
-
-[? if srpd_formed : {!<tr><td><div class="box" style='background-color:#F4A460'> </div></td<td> !}SRPD: {!</td><td>!} [+ srpd_r +]% {!</td><td>!} [+ str_change_srpd +] {!</td></tr>!} ?]
+{!<tr><td><div class="box" style='background-color:#C40000'> </div></td> <td> !}Other left-wing parties: {!</td><td>!} [+ left-others_r +]% {!</td></tr>!} ?]
 
 {!<tr><td><div class="box" style='background-color:#8B0000'> </div></td> <td>!}KPD: {!</td><td>!} [+ kpd_r +]% {!</td></tr>!}
 
