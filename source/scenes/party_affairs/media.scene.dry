@@ -9,7 +9,7 @@ card-image: img/sangerbund.jpg
 
 = Media
 
-The SPD runs a veritable media empire, with many newspapers throughout every German city and region. We could use the media for various purposes...
+The KPD runs a veritable media empire, with many newspapers throughout every German city and region. We could use the media for various purposes...
 
 - @commercial
 - @campaign
@@ -24,24 +24,24 @@ The SPD runs a veritable media empire, with many newspapers throughout every Ger
 
 @commercial
 title: Make our newspapers more commercialized by broadening their appeal beyond party supporters.
-subtitle: This might upset ideological purists, but it may bring in more funds and perhaps expose the middle class to socialist views.
-on-arrival: resources += 1; commercialized_media += 1; new_middle_spd += 4*(1 - dissent); old_middle_spd += 3*(1-dissent); left_dissent += 10; labor_dissent += 10
+subtitle: This might upset ideological purists, but it may bring in more funds and perhaps expose nationalistic workers to communist views.
+on-arrival: resources += 1; commercialized_media += 1; workers_kpd += 4*(1 - dissent); ultra-left_dissent += 10; left-opposition_dissent += 10
 
-Our commercialized newspapers are able to bring in more funds. However, the left and labor factions express their displeasure.
+Our commercialized newspapers are able to bring in more funds. However, the Ultra-left and Left Opposition factions express their displeasure.
 
 @campaign
 title: The purpose of our media is to elect more Social Democrats.
 subtitle: Our newspapers will focus on the electoral campaign.
-on-arrival: campaign_media += 1; workers_spd += 4*(1 - dissent); unemployed_spd += 2*(1-dissent);
+on-arrival: campaign_media += 1; workers_kpd += 2*(1 - dissent); unemployed_kpd += 2*(1-dissent);
 
-Our campaign media is mostly reaching the workers who are already saturated with Socialist propaganda, but it must be doing *something*, or at least that is what we hope.
+Our campaign media is mostly reaching the workers who are already saturated with Communist propaganda, but it must be doing *something*, or at least that is what we hope.
 
 @ideological
 title: We will have vibrant ideological debate within our newspapers.
 subtitle: There will be space for all factions to air their views.
-on-arrival: left_dissent -= 6; labor_dissent -= 6; center_dissent -= 6; reformist_dissent -= 6; neorevisionist_dissent -= 6
+on-arrival: ultra-left_dissent -= 6; left-opposition_dissent -= 6; conciliator_dissent -= 6; right_dissent -= 6
 
-This has been our media course historically, and it has successfully paved over the many tensions in our party.
+This seems to be successfully paving over the many tensions in our party.
 
 @radio
 title: Why not fund a radio station?
@@ -49,9 +49,9 @@ subtitle: -2 resources
 choose-if: resources >= 2
 unavailable-subtitle: Not enough resources.
 view-if: radio = 0
-on-arrival: radio += 1; resources -= 2; new_middle_spd += 4*(1 - dissent); old_middle_spd += 3*(1 - dissent); workers_spd += 2*(1 - dissent); labor_dissent += 5; socialism += 3*(1 - dissent); nationalism -= 3*(1 - dissent) if pacifism > 1; pro_republic += 3*(1-dissent) if democratization > 1
+on-arrival: radio += 1; resources -= 2; workers_kpd += 2*(1 - dissent); socialism += 3*(1 - dissent); nationalism -= 3*(1 - dissent) if pacifism > 1; pro_republic -= 3*(1-dissent)
 
-Our new radio station allows us to connect to people in a more intimate setting than before, spreading the message of socialism along with music and other popular content. Since most proletarians cannot afford family radios right now, we are reaching the middle class, a fact of which our labor comrades are painfully aware.
+Our new radio station allows us to connect to people in a more intimate setting than before, spreading the message of socialism along with music and other popular content. Since most proletarians cannot afford family radios right now, our effectiveness is limited.
 
 @radio_2
 title: We must keep on building up our radio network.
@@ -59,7 +59,7 @@ subtitle: -1 resources
 choose-if: resources >= 1
 unavailable-subtitle: Not enough resources.
 view-if: radio > 0 and radio <= 3
-on-arrival: radio += 1; resources -= 1; new_middle_spd += 5*(1 - dissent); old_middle_spd += 3*(1 - dissent); workers_spd += 3*(1 - dissent); socialism += 3*(1 - dissent); nationalism -= 3*(1 - dissent)*(pacifism-2) if pacifism > 2; pro_republic += 3*(1-dissent)*(democratization-2) if democratization > 2
+on-arrival: radio += 1; resources -= 1; new_middle_kpd += 5*(1 - dissent); old_middle_spd += 3*(1 - dissent); workers_spd += 3*(1 - dissent); socialism += 3*(1 - dissent); nationalism -= 3*(1 - dissent)*(pacifism-2) if pacifism > 2; pro_republic += 3*(1-dissent)*(democratization-2) if democratization > 2
 
 Our new radio network has a mix of popular and political programming, and is proving a success.
 
