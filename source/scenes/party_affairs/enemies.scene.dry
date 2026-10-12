@@ -22,7 +22,7 @@ In our media and campaign materials, who should we consider as our main opponent
 - @easy_discard
 
 @pro_republic
-on-arrival: enemies = "pro republic"; ultra-left_strength += 5; stalinist_strength += 5; conciliator_dissent += 5; right_dissent += 5; workers_spd -= 3; workers_z -= 1; spd_relation -= 10; ddp_relation -= 10; z_relation -= 10
+on-arrival: enemies = "pro republic"; left_strength += 5; stalinist_strength += 5; conciliator_dissent += 5; right_dissent += 5; workers_spd -= 3; workers_z -= 1; spd_relation -= 10; ddp_relation -= 10; z_relation -= 10
 
 Attacking the pro-republican parties is popular among all but the Conciliators and the Right wing of our party, who would prefer to be fighting the far-right parties. This might also hamper our ability to reconcile with the SPD in the future.
 
