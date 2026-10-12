@@ -14,9 +14,9 @@ The KPD is torn between many different ideological currents. What should be our 
 
 [? if ideology != 0 : We have previously chosen a [+ ideology +] ideology. Changing it will likely have drawbacks. ?]
 
-- @class_struggle: Class struggle and preparing the proletariat for the revolution are our primary goals.
-- @centrist: The "middle ground" of Karl Kautsky remains the best way to resolve our internal contradictions.
-- @conciliator: We should strive to create an internally democratic party independent from Moscow
+- @ultra_left: Aligning the "Left Opposition" of Leon Trotsky, our party should launch immediate revolutions, boycott bourgeois elections, and reject the United Front.
+- @stalinist: We should expel dissidents from the KPD, follow the revolutionary policies of Moscow, and refuse to ally with the SPD.
+- @conciliator: The "middle ground" of Ernst Meyer remains the best way to resolve our internal contradictions.
 - @right: We should form a "United Front" with other left-wing parties, including the SPD, and expand our electorate to fight fascism.
 - @easy_discard
 
@@ -27,7 +27,7 @@ if (Q.ideology && Q.ideology != "left") {
 }
 !}
 go-to: changed if changed = 1
-on-departure: ideology = "left"; left_strength += 10; communist_coalition += 1; left_dissent -= 5; z_relation -= 3; dvp_relation -= 5; nationalization_support += 1; kpd_relation += 3
+on-departure: ideology = "ultra-left"; left_strength += 10; communist_coalition += 1; left_dissent -= 5; z_relation -= 3; dvp_relation -= 5; nationalization_support += 1; kpd_relation += 3
 
 The radical left of the party supports a course of class struggle, and potentially a reconcilliation with the Communists.
 
