@@ -13,7 +13,7 @@ In our media and campaign materials, who should we consider as our main opponent
 
 [? if enemies != 0 : Previously, we had considered the [+ enemies +] as our prior enemies. Is a change of direction necessary? ?]
 
-- @social_fascist: The so-called "social-facists" - the SPD.
+- @spd: The so-called "social-facists" - the SPD.
 - @far_right: The far right - the NSDAP and DNVP.
 - @nsdap: The NSDAP alone.
 - @right_wing: Every party to the right of the SPD.
@@ -24,27 +24,27 @@ In our media and campaign materials, who should we consider as our main opponent
 @pro_republic
 on-arrival: enemies = "pro republic"; ultra-left_strength += 5; stalinist_strength += 5; conciliator_dissent += 5; right_dissent += 5; workers_spd -= 3; workers_z -= 1; spd_relation -= 10
 
-Attacking the pro-republican parties is popular among all but the Conciliators and the right wing of our party, who would prefer to be fighting the far-right parties. This might also hamper our ability to reconcile with the SPD in the future.
+Attacking the pro-republican parties is popular among all but the Conciliators and the Right wing of our party, who would prefer to be fighting the far-right parties. This might also hamper our ability to reconcile with the SPD in the future.
 
 @far_right
-on-arrival: enemies = "far right"; workers_nsdap -= 3; workers_dnvp -= 3;
+on-arrival: enemies = "far right"; workers_nsdap -= 3; workers_dnvp -= 3; right_strength += 5
 
 Attacking the far right is popular among the entire party, although many consider the bourgeois parties to be just as dangerous. 
 
 @right_wing
-on-arrival: enemies = "right wing"; dvp_relation -= 5; z_relation -= 5; workers_z -= 2; workers_nsdap -= 2; workers_dnvp -= 2;
+on-arrival: enemies = "right wing"; dvp_relation -= 5; z_relation -= 5; workers_z -= 2; workers_nsdap -= 2; workers_dnvp -= 2
 
 Attacking the Right is popular among the Left.
 
 @nsdap
-on-arrival: enemies = "NSDAP"; neorevisionist_strength += 5; nazi_urgency += 1; workers_nsdap -= 4;
+on-arrival: enemies = "NSDAP"; nazi_urgency += 1; workers_nsdap -= 4
 
 [? if nazi_urgency == 0 or nsdap_r < 10 : The NSDAP is a tiny party right now, with more bark than bite. Many in our party are questioning our choices. ?][? if nazi_urgency > 0 and nsdap_r >= 10 : The Nazis are the most urgent problem for us to deal with. ?]
 
-@kpd
-on-arrival: enemies = "KPD"; reformist_strength += 5; left_dissent += 8; reformist_dissent -= 5; kpd_relation -= 15; dvp_relation += 5; z_relation += 5; workers_kpd -= 4;
+@spd
+on-arrival: enemies = "SPD"; stalinist_strength += 5; right_dissent += 8; conciliator_dissent -= 5; spd_relation -= 15; workers_spd -= 4
 
-Attacking the KPD is supported by all but the most left-wing socialists, and wins us some measure of approval among the bourgeois parties. However, If we are to reconcile with the KPD, this may not be the best choice.
+Attacking the SPD is supported by the Stalinists, but not the Conciliators and Right. However, if we are to reconcile with the SPD, this may not be the best choice.
 
 @bourgeois
 on-arrival: enemies = "bourgeois parties"; dvp_relation -= 5; z_relation -= 5; workers_z -= 3
