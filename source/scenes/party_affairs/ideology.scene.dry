@@ -12,59 +12,59 @@ max-visits: 3
 
 The KPD is torn between many different ideological currents. What should be our primary ideological guidance for now?
 
-[? if ideology != 0 : We have previously chosen a [+ ideology +] ideology. Changing it will likely have drawbacks. ?]
+[? if ideology != 0 : We have previously chosen a [+ ideology +] ideology. ?]
 
-- @ultra_left: Aligning the "Left Opposition" of Leon Trotsky, our party should launch immediate revolutions, boycott bourgeois elections, and reject the United Front.
-- @stalinist: We should expel dissidents from the KPD, follow the revolutionary policies of Moscow, and refuse to ally with the SPD.
+- @ultra_left: Our party should launch immediate revolutions, follow the directives of Moscow, and attack democratic forces.
+- @left_opposition: Following Leon Trotsky, we should support the "United Front" ideal, fight Stalinism, and restore workers' councils.
 - @conciliator: The "middle ground" of Ernst Meyer remains the best way to resolve our internal contradictions.
-- @right: We should form a "United Front" with other left-wing parties, including the SPD, and expand our electorate to fight fascism.
+- @right: We should form a "United Front" with other left-wing parties, and expand our electorate to nationalistic workers.
 - @easy_discard
 
-@class_struggle
+@ultra_left
 on-arrival: {!
-if (Q.ideology && Q.ideology != "left") {
+if (Q.ideology && Q.ideology != "ultra-left") {
     Q.changed = 1;
 }
 !}
 go-to: changed if changed = 1
-on-departure: ideology = "ultra-left"; left_strength += 10; communist_coalition += 1; left_dissent -= 5; z_relation -= 3; dvp_relation -= 5; nationalization_support += 1; kpd_relation += 3
+on-departure: ideology = "ultra-left"; ultra-left_strength += 10; communist_coalition -= 1; ultra-left_dissent -= 5; z_relation -= 3; dvp_relation -= 5; nationalization_support += 1; spd_relation -= 3
 
-The radical left of the party supports a course of class struggle, and potentially a reconcilliation with the Communists.
+The radical ultra-left of our party supports immediate revolution, fighting against pro-democratic parties, and loyalty to Stalin.
 
-@centrist
+@left_opposition
 on-arrival: {!
 if (Q.ideology && Q.ideology != "centrist") {
     Q.changed = 1;
 }
 !}
 go-to: changed if changed = 1
-on-departure: ideology = "centrist"; center_strength += 10; center_dissent -= 10; left_dissent -= 5; reformist_dissent -= 5
+on-departure: ideology = "left opposition"; left-opposition_strength += 10; ultra-left_dissent += 10; conciliator_dissent -= 5; communist_coalition += 1;
 
-The Center Marxists, represented by Kautsky and Hilferding, support a middle course of preparing for revolution while building up the consciousness of the working class.
+The Left Opposition supports Leon Trotsky and a temporary "United Front" against fascism, while striving for total communism later.
 
-@labor
+@conciliator
 on-arrival: {!
-if (Q.ideology && Q.ideology != "labor") {
+if (Q.ideology && Q.ideology != "conciliator") {
     Q.changed = 1;
 }
 !}
 go-to: changed if changed = 1
-on-departure: ideology = "labor"; labor_strength += 10; wtb_support += 1; labor_dissent -= 5; kpd_relation -= 3
+on-departure: ideology = "conciliator"; conciliator_strength += 10; conciliator_dissent -= 5; communist_coalition += 1;
 
-The labor wing of the party supports continued particpation in government in order to provide benefits to the workers, and the creation of public works programs for employment.
+The conciliator wing of the party is open to considering the United Front, but does not openly criticize Stalin or the ultra-left. 
 
-@reform
+@right
 on-arrival: {!
-if (Q.ideology && Q.ideology != "reformist") {
+if (Q.ideology && Q.ideology != "right") {
     Q.changed = 1;
 }
 !}
 go-to: changed if changed = 1
-on-departure: ideology = "reformist"; reformist_strength += 10; democratization += 1; reformist_dissent -= 5; z_relation += 5; dvp_relation += 5; kpd_relation -= 8; moderate_plan_support += 1
+on-departure: ideology = "right"; right_strength += 10; right_dissent -= 5; spd_relation += 5; z_relation += 5; communist_coalition += 2
 
-The reformist wing of the party seeks to preserve the Republic and the democratic system of government, and is most supportive of coalitions with the other pro-democracy parties.
+The reformist wing of the party seeks to take a pragmatic approach in fighting facism, and is most supportive of coalitions with the other left-wing parties.
 
 @changed
-on-arrival: left_dissent += 5; center_dissent += 5; labor_dissent += 5; reformist_dissent += 5
+on-arrival: ultra-left_dissent += 1
 
-We have changed ideologies. Many in the party feel unmoored.
+We have changed ideologies. This is a common event in the KPD.
